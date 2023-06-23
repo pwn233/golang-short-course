@@ -1,8 +1,9 @@
 package central
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Endpoint struct{}
@@ -28,7 +29,11 @@ func (e *Endpoint) Add(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, err.Error())
 	}
 	if response, err := centralService.AddNumber(requestBody); err != nil {
-		c.AbortWithStatusJSON(http.StatusInternalServerError, err.Error())
+		c.AbortWithStatusJSON(http.StatusInternalServerError,
+			gin.H{
+				"error": err.Error(),
+			},
+		)
 	} else {
 		c.JSON(http.StatusOK, response)
 	}
