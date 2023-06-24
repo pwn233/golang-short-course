@@ -13,7 +13,7 @@ type Store struct {
 	DB *gorm.DB
 }
 
-var DevSandbox Store
+var GolangShortCourse Store
 
 func InitializeDatabaseConnection() {
 	var ConnectionMasterDB string
@@ -29,5 +29,5 @@ func InitializeDatabaseConnection() {
 		log.Fatal(fmt.Sprintf("[Database] Failed to connect database : %s\n", err.Error()))
 	}
 	fmt.Printf("[Database] Successfully connected at : %s\n", ConnectionMasterDB)
-	DevSandbox.DB = db
+	GolangShortCourse.DB = db
 }

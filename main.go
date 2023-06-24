@@ -15,7 +15,7 @@ import (
 func main() {
 	gin.SetMode(gin.DebugMode)
 	// For Advance : Database Connection (repository)
-	// config.InitializeDatabaseConnection()
+	//dbconfig.InitializeDatabaseConnection()
 	r := handler.Routes{}
 	handleRoute := r.InitRouter()
 	AppSrv := &http.Server{Addr: ":8443", Handler: handleRoute}
